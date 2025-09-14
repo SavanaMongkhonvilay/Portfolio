@@ -1,23 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Savana Mongkhonvilay Portfolio</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Savana Mongkhonvilay</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <header>
-    <h1>Hi! This is my Portfolio</h1>
-  </header>
 
-  <main>
-  </main>
+    <!-- nav bar -->
+    <nav class="navbar">
 
-  <footer>
-  </footer>
+        <!-- nav items  -->
+        <ul class="navbar-menu">
+            <li><a href="work.html">Work</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
 
-  <script src="javascript/script.js"></script>
+    </nav>
+
+    <!-- home hero -->
+    <section class="hero">
+        <img src="assets/savana img.png" alt="Savana illustration">
+        <div class="hero-text">
+            <h1 class="hero-h1"> Hi! I'm Savana </h1>
+            <h2 class="hero-typing">
+                <span class="text"></span>
+                <span class="cursor">|</span>
+            </h2>
+        </div>
+    </section>
+
+    <!-- project filters  -->
+    <section id="projects">
+        <div class="project-filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="web">Web</button>
+            <button class="filter-btn" data-filter="design">Design</button>
+            <button class="filter-btn" data-filter="wordpress">WordPress</button>
+        </div>
+
+    <!-- project cards -->
+
+    <!-- PLACE HOLDER IMAGES REMEMBER TO REPLACE -->
+    <div class="projects-grid">
+      <div class="project-card" data-category="web">
+        <img src="assets/hero 1.png.png" alt="Project 1">
+        <div class="project-content">
+          <h3>Project 1</h3>
+          <p>HTML, CSS, JavaScript</p>
+        </div>
+      </div>
+
+      <div class="project-card" data-category="design">
+        <img src="assets/hero 1.png.png" alt="Project 2">
+        <div class="project-content">
+          <h3>Project 2</h3>
+          <p>UI/UX, Figma</p>
+        </div>
+      </div>
+
+      <div class="project-card" data-category="wordpress">
+        <img src="assets/hero 1.png.png" alt="Project 3">
+        <div class="project-content">
+          <h3>Project 3</h3>
+          <p>WordPress</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="js/script.js"></script>
+  
 </body>
 </html>
+
+<!-- TO DO LIST -->
+<!-- Create Website background image  -->
+<!-- Add in projects to work -->
+<!-- Add in about page -->
+<!-- Add in contact page -->
+<!-- button for resume ? -->
+<!-- section for work experience ? -->
+<!-- Add in footer -->
+<!-- fix some of the filter animations -->
+<!--  -->
 
