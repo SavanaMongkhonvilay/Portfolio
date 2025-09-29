@@ -1,7 +1,6 @@
 $(document).ready(function() {
 
-
-// Hero typing
+  // Hero typing
   function initHeroTyping() {
     const $typingElement = $(".hero-typing .text");
     const $cursor = $(".hero-typing .cursor");
@@ -46,20 +45,7 @@ $(document).ready(function() {
     blinkCursor();
   }
 
-// Nav Hover 
-
-function initNavbarHover() {
-  const $navbarLinks = $(".navbar-menu li a");
-  const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--primary-color').trim();
-  const textColor = getComputedStyle(document.documentElement).getPropertyValue('--text-color').trim();
-
-  $navbarLinks.hover(
-    function() { $(this).css('color', primaryColor); },
-    function() { $(this).css('color', textColor); }
-  );
-}
-
-// Project filtering 
+  // Project filtering 
   function initProjectFiltering() {
     const $filterBtns = $(".filter-btn");
     const $projectCards = $(".project-card");
@@ -72,17 +58,56 @@ function initNavbarHover() {
 
       $projectCards.each(function() {
         if (filter === 'all' || $(this).data('category') === filter) {
-          $(this).fadeIn(300);
+          $(this)
+            .stop(true, true)
+            .fadeIn(300)
+            .css({ opacity: 0, top: "30px" })
+            .animate({ opacity: 1, top: "0px" }, 500);
         } else {
-          $(this).fadeOut(300);
+          $(this).stop(true, true).fadeOut(300);
         }
       });
     });
+
+   // card animation 
+    $(".project-card").hover(
+      function() {
+        $(this).stop(true).animate(
+          { top: "-10px" },
+          300
+        );
+        $(this).css("box-shadow", "0 12px 24px rgba(0,0,0,0.3)");
+      },
+      function() {
+        $(this).stop(true).animate(
+          { top: "0px" },
+          300
+        );
+        $(this).css("box-shadow", "0 4px 12px rgba(0,0,0,0.1)");
+      }
+    );
   }
 
-// intitizalize functions 
+  // Dark toggle
+  function initDarkToggle() {
+    lucide.createIcons();
+
+    $("#darkToggle").click(function() {
+      $("body").toggleClass("dark");
+
+      if ($("body").hasClass("dark")) {
+        $("#darkToggle").html('<i data-lucide="moon"></i>');
+      } else {
+        $("#darkToggle").html('<i data-lucide="sun"></i>');
+      }
+
+      lucide.createIcons();
+    });
+  }
+
+  // Initialize functions 
   initHeroTyping();
-  initNavbarHover();
   initProjectFiltering();
+  initDarkToggle();
 
 });
