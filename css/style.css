@@ -3,11 +3,31 @@
     --primary-color: #f86e12ff;  
     --text-color: #111;           
     --light-text: #555;          
-    --background-color: #fff;    
+    --background-color: #fff5ec;    
     --button-border: #ccc;       
     --card-shadow: rgba(0, 0, 0, 0.1);
     --card-hover-shadow: rgba(0, 0, 0, 0.2);
-    }
+    --footer-color: #eaceb6;
+    --semi-transparent: rgba(255, 255, 255, 0.8); 
+    --button-color: #ffffff;
+}
+
+/* Dark mode */
+body.dark {
+  --background-color: #3c37ae;
+  --text-color: #fff;
+  --primary-color: #977dff;
+  --footer-color: #050456;
+  --semi-transparent: rgba(255, 255, 255, 0.1);
+  --card-color: #060666;
+  --light-text: #dedede;
+  --button-color: #342f99;;
+}
+
+body.dark .project-card {
+  background-image: none; 
+  background-color: var(--card-color);
+}
 
 * {
     margin: 0;
@@ -20,6 +40,7 @@ body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
     color: var(--text-color);
     background-color: var(--background-color);
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 /* Navbar */
@@ -27,11 +48,14 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 1rem 2rem;
+    padding-top: 1em;
+    padding-bottom: 1em;
     position: sticky;
     top: 0;
     background-color: var(--background-color);
     z-index: 1000;
+    width: 100%;
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 .navbar-menu {
@@ -102,6 +126,8 @@ body {
     transition: all 0.3s;
     border: none;
     border-radius: 5px;
+    background-color: var(--button-color);
+    color: var(--text-color);
 }
 
 .filter-btn.active,
@@ -110,53 +136,43 @@ body {
     color: var(--background-color);
 }
 
-/* Projects Grid */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
     gap: 3rem;
-    padding: 0 3rem 4rem;
-    margin: 0 6em;
+    padding: 0 4rem 4rem;
+    margin: 0; 
 }
 
 /* Project cards */
 .project-card {
-    position: relative;
-    width: 100%;
-    max-height: 40vh;
-    overflow: hidden;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px var(--card-shadow);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background-color: var(--background-color);
-    display: flex;
-    flex-direction: column;
+  position: relative;
+  width: 100%;
+  min-height: 250px; 
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px var(--card-shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s;
+  background-color: var(--background-color); 
+  display: flex;
+  flex-direction: column;
+  background-image: url('../assets/hero 1.png.png');
+  background-size: cover;
+  background-position: center;
+  transition: background-color 0.5s ease, color 0.5s ease;
+  top: 0; 
 }
 
-.project-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 8px 16px var(--card-hover-shadow);
-}
-
-.project-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-.project-card:hover img {
-    transform: scale(1.05);
-}
 
 /* Project content overlay */
 .project-content {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    padding: 1rem;
-    background: rgba(255, 255, 255, 0.8);
-    text-align: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 1rem;
+  background: var(--semi-transparent);
+  text-align: center;
+  z-index: 2;
 }
 
 .project-content h3 {
@@ -170,4 +186,59 @@ body {
     color: var(--light-text);
 }
 
+/* Footer */
+.footer {
+    background-color: var(--footer-color);
+    height: 30vh;
+    padding: 1em;
+}
 
+.media-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+    margin: 0;
+    text-align: center;
+    padding-top: 3em;
+}
+
+.footer a {
+    text-decoration: none;
+    color: var(--light-text);
+    transition: color 0.3s;
+}
+
+.footer a:hover {
+    color: var(--primary-color);
+}
+
+.footer a:first-child {
+    font-weight: bold;
+}
+
+.footer button {
+    margin: 2em auto;
+    margin-bottom: 2em;
+}
+
+.dark-btn {
+  position: static;
+  background: transparent; 
+  border: none; 
+  color: var(--primary-color); 
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: color 0.3s, transform 0.2s;
+  margin-top: 10px;
+}
+
+.dark-btn:hover {
+  color: var(--dark-primary-color);
+  transform: scale(1.1);
+}
