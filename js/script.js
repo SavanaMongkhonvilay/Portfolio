@@ -2,26 +2,25 @@ $(document).ready(function() {
 
   //Hero IMG
   function initChangeSavanaImg() {
-    const images = [
-      "./assets/savanaimg1.png",
-      "./assets/savanaimg2.png",
-      "./assets/savanaimg3.png"
-    ];
-    let currentIndex = 0;
+  const images = [
+    "assets/savanaimg1.png",
+    "assets/savanaimg2.png",
+    "assets/savanaimg3.png"
+  ];
+  let currentIndex = 0;
 
-    $("#Savana-img").click(function() {
-      const img = $(this);
+  $("#Savana-img").click(function() {
+    const img = $(this);
+    currentIndex = (currentIndex + 1) % images.length;
 
-      currentIndex = (currentIndex + 1) % images.length;
-      
-      img.fadeOut(100, function() {
-        img.attr("src", images[currentIndex]).fadeIn(300);
-        img.animate({ top: "-=20px" }, 350, "easeOutQuad")
-          .animate({ top: "+=20px" }, 250, "easeOutBounce");
+    img.fadeOut(200, function() {
+      img.attr("src", images[currentIndex]).fadeIn(100, function() {
+        img.animate({ top: "-15px" }, 150)  
+           .animate({ top: "0px" }, 150); 
       });
     });
-  }
-
+  });
+}
 
   // Hero typing
   function initHeroTyping() {
