@@ -1,5 +1,28 @@
 $(document).ready(function() {
 
+  //Hero IMG
+  function initChangeSavanaImg() {
+    const images = [
+      "./assets/savanaimg1.png",
+      "./assets/savanaimg2.png",
+      "./assets/savanaimg3.png"
+    ];
+    let currentIndex = 0;
+
+    $("#Savana-img").click(function() {
+      const img = $(this);
+
+      currentIndex = (currentIndex + 1) % images.length;
+      
+      img.fadeOut(100, function() {
+        img.attr("src", images[currentIndex]).fadeIn(300);
+        img.animate({ top: "-=20px" }, 350, "easeOutQuad")
+          .animate({ top: "+=20px" }, 250, "easeOutBounce");
+      });
+    });
+  }
+
+
   // Hero typing
   function initHeroTyping() {
     const $typingElement = $(".hero-typing .text");
@@ -92,20 +115,40 @@ $(document).ready(function() {
   function initDarkToggle() {
     lucide.createIcons();
 
-    $("#darkToggle").click(function() {
-      $("body").toggleClass("dark");
+    // saves changes
+    if (localStorage.getItem("theme") === "dark") {
+      $("body").addClass("dark");
+      $("#darkToggle").html('<i data-lucide="moon"></i>');
+    } else {
+      $("body").removeClass("dark");
+      $("#darkToggle").html('<i data-lucide="sun"></i>');
+    }
+    lucide.createIcons();
 
-      if ($("body").hasClass("dark")) {
+    $("#darkToggle").click(function() {
+      const body = $("body");
+
+      body.addClass("transition-on-toggle");
+
+      body.toggleClass("dark");
+
+      if (body.hasClass("dark")) {
         $("#darkToggle").html('<i data-lucide="moon"></i>');
+        localStorage.setItem("theme", "dark");
       } else {
         $("#darkToggle").html('<i data-lucide="sun"></i>');
+        localStorage.setItem("theme", "light");
       }
 
       lucide.createIcons();
+      setTimeout(() => body.removeClass("transition-on-toggle"), 300);
     });
   }
 
+
+
   // Initialize functions 
+  initChangeSavanaImg()
   initHeroTyping();
   initProjectFiltering();
   initDarkToggle();
