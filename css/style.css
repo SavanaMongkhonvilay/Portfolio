@@ -10,6 +10,7 @@
     --footer-color: #eaceb6;
     --semi-transparent: rgba(255, 255, 255, 0.8); 
     --button-color: #ffffff;
+    --dark-primary-color: #977dff; 
 }
 
 /* Dark mode */
@@ -22,6 +23,7 @@ body.dark {
   --card-color: #060666;
   --light-text: #dedede;
   --button-color: #342f99;;
+  --dark-primary-color: #f86e12ff;
 }
 
 body.dark .project-card {
@@ -40,8 +42,15 @@ body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
     color: var(--text-color);
     background-color: var(--background-color);
-    transition: background-color 0.5s ease, color 0.5s ease;
 }
+
+body.transition-on-toggle ,
+.navbar.transition-on-toggle
+.footer.transition-on-toggle, 
+.project-card.transition-on-toggle {
+  transition: background-color 0.3s, color 0.3s;
+}
+
 
 /* Navbar */
 .navbar {
@@ -55,7 +64,6 @@ body {
     background-color: var(--background-color);
     z-index: 1000;
     width: 100%;
-    transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 .navbar-menu {
@@ -87,6 +95,17 @@ body {
 .hero img {
     width: 250px;
     height: auto;
+}
+
+#Savana-img {
+  cursor: pointer;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  border-radius: 12px;
+  position: relative;
+}
+
+#Savana-img:hover {
+  transform: scale(1.05);
 }
 
 .hero-text {
@@ -159,7 +178,6 @@ body {
   background-image: url('../assets/hero 1.png.png');
   background-size: cover;
   background-position: center;
-  transition: background-color 0.5s ease, color 0.5s ease;
   top: 0; 
 }
 
@@ -185,6 +203,18 @@ body {
     font-size: 1rem;
     color: var(--light-text);
 }
+
+/* about */
+.about {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 1em 4em 3em;
+    font-size: 1em;
+}
+
+.about h1 {
+    margin-bottom: 1em; 
+}
+
 
 /* Footer */
 .footer {
