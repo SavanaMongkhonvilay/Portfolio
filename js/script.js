@@ -22,6 +22,7 @@ $(document).ready(function() {
   });
 }
 
+
   // Hero typing
   function initHeroTyping() {
     const $typingElement = $(".hero-typing .text");
@@ -66,6 +67,21 @@ $(document).ready(function() {
     type();
     blinkCursor();
   }
+  
+  // Nav bar menu 
+  function initActiveNav() {    
+    const currentPath = window.location.pathname;
+    $("#navbar .nav-link").each(function () {
+    const linkPath = $(this).attr("href");
+    if (linkPath === currentPath || linkPath === currentPath.split("/").pop()) {
+      $(this).addClass("active"); 
+    } else {
+      $(this).removeClass("active");
+    }
+  });
+  }
+
+
 
   // Project filtering 
   function initProjectFiltering() {
@@ -149,6 +165,7 @@ $(document).ready(function() {
   // Initialize functions 
   initChangeSavanaImg()
   initHeroTyping();
+  initActiveNav(); 
   initProjectFiltering();
   initDarkToggle();
 
