@@ -7,7 +7,7 @@
     --button-border: #ccc;       
     --card-shadow: rgba(0, 0, 0, 0.1);
     --card-hover-shadow: rgba(0, 0, 0, 0.2);
-    --footer-color: #eaceb6;
+    --footer-color: rgb(244, 161, 106);
     --semi-transparent: rgba(255, 255, 255, 0.8); 
     --button-color: #ffffff;
     --dark-primary-color: #977dff; 
@@ -72,7 +72,14 @@ body.transition-on-toggle ,
     gap: 1.5rem;
 }
 
-.navbar-menu li a {
+.navbar-menu .nav-link {
+    display: inline-block;
+    padding: 8px 16px;
+    background: var(--background-color);
+    color: #333;
+    border-radius: 20px;  
+    text-decoration: none;
+    transition: background 0.8s, color 0.8s;
     text-decoration: none;
     font-size: 1rem;
     color: var(--text-color);
@@ -81,6 +88,11 @@ body.transition-on-toggle ,
 
 .navbar-menu li a:hover {
     color: var(--primary-color);
+}
+
+.navbar-menu .nav-link.active {
+  background: var(--primary-color);  
+  color: white;
 }
 
 /* Hero */
